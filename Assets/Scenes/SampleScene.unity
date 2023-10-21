@@ -344,7 +344,7 @@ Transform:
   m_GameObject: {fileID: 160381635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -3.13, z: 0}
+  m_LocalPosition: {x: -8, y: -4.51, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -391,8 +391,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MovementSpeed: 5
+  _ColliderFacingRight: 0.1023303
+  _ColliderFacingLeft: -0.1023303
   _GroundedCheckTransform: {fileID: 480271017}
-  _GroundRadius: 0.1
+  _GroundRadius: 0.3
   _GroundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -402,6 +404,7 @@ MonoBehaviour:
   _Rbody: {fileID: 160381639}
   _Anim: {fileID: 160381636}
   _Render: {fileID: 160381637}
+  _Collider: {fileID: 160381642}
   DebugMode: 0
 --- !u!114 &160381641
 MonoBehaviour:
@@ -681,7 +684,7 @@ Transform:
   m_GameObject: {fileID: 480271016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0991, y: -0.076, z: 0}
+  m_LocalPosition: {x: 0.0991, y: -0.017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,6 +702,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -818,12 +822,30 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 8.47, y: -2.72, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e8b56f7ee240e5af26a18a7561e08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Target: {fileID: 160381638}
+  _LerpSpeed: 40
+  _MinY: -2.72
+  _MaxY: 0
+  _MinX: -3.66
+  _MaxX: 8.47
 --- !u!1 &590075948
 GameObject:
   m_ObjectHideFlags: 0
