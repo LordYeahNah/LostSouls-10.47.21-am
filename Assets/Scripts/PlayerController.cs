@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")] 
     [SerializeField] private float _MovementSpeed;
+    [SerializeField] private float _ColliderFacingRight;
+    [SerializeField] private float _ColliderFacingLeft;
     private bool _Flipped = false;
     private bool _CanMove = true;
 
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _Rbody;
     [SerializeField] private Animator _Anim;
     [SerializeField] private SpriteRenderer _Render;
+    [SerializeField] private CapsuleCollider2D _Collider;                       // reference to the collider
 
     [Header("Debug")] 
     [SerializeField] private bool DebugMode = true;
@@ -99,11 +102,20 @@ public class PlayerController : MonoBehaviour
                     y = _Gravity * _GravityModifier
                 };
             }
+            else
+            {
+                movementInput = new Vector2
+                {
+                    x = movementInput.x,
+                    y = 0f
+                };
+            }
         }
 
         if (movementDirection > 0)
         {
             _Flipped = false;
+            
         } else if (movementDirection < 0)
         {
             _Flipped = true;
@@ -112,12 +124,20 @@ public class PlayerController : MonoBehaviour
         if (_Flipped)
         {
             if (!_Render.flipX)
+            {
                 _Render.flipX = true;
+                _Collider.offset = new Vector2(_ColliderFacingLeft, _Collider.offset.y);
+            }
+                
         }
         else
         {
             if (_Render.flipX)
+            {
                 _Render.flipX = false;
+                _Collider.offset = new Vector2(_ColliderFacingRight, _Collider.offset.y);   
+            }
+                
         }
 
         if (_Anim)
