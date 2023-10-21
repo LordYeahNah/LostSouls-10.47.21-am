@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (Physics2D.OverlapCircle(_GroundedCheckTransform.position, _GroundRadius, _GroundLayer))
+        if(Physics2D.Raycast(_GroundedCheckTransform.position, Vector2.down, _GroundRadius, _GroundLayer))
         {
             return true;
         }
