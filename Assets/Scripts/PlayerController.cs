@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(IsGrounded());
         }
+        
+        if(_Anim)
+            _Anim.SetBool("IsGrounded", IsGrounded());
     }
 
     private void FixedUpdate()
@@ -85,11 +88,14 @@ public class PlayerController : MonoBehaviour
 
         if (_PerformJump)
         {
+            _Rbody.velocity = Vector2.zero;
             movementInput = new Vector2
             {
                 x = 0,
                 y = movementInput.y + _JumpForce
             };
+            if(_Anim)
+                _Anim.SetTrigger("Jump");
             _PerformJump = false;
         }
         else
@@ -164,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && IsGrounded())
         {
             _PerformJump = true;
         }
