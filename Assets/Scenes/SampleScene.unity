@@ -392,13 +392,16 @@ MonoBehaviour:
   _ColliderFacingRight: 0.1023303
   _ColliderFacingLeft: -0.1023303
   _SweepAttackCooldown: 0.35
-  _JumpAttackCooldown: 0
+  _SlamAttackCooldown: 0.45
+  _SlamAttackGravity: 0.1
+  _PauseGravityTime: 1
   _GroundedCheckTransform: {fileID: 480271017}
   _GroundRadius: 0.3
   _GroundLayer:
     serializedVersion: 2
     m_Bits: 64
   _GravityModifier: 0.3
+  _ApplyGravity: 1
   _AirControl: 2
   _JumpForce: 25
   _Rbody: {fileID: 160381639}
@@ -1479,7 +1482,7 @@ Transform:
   m_GameObject: {fileID: 1486308575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7101185, y: -3.42, z: 0}
+  m_LocalPosition: {x: 1.7101185, y: -3.87, z: 0}
   m_LocalScale: {x: 2.6, y: 2.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

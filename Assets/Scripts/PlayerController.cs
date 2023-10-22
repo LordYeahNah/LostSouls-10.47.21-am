@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,9 +16,13 @@ public class PlayerController : MonoBehaviour
     private bool _Flipped = false;                          // If the sprite is flipped
     private bool _CanMove = true;                       // If the character can move
 
-    [Header("Attacks")] 
+    [Header("Sweep Attack")] 
     [SerializeField] private float _SweepAttackCooldown;
-    [SerializeField] private float _JumpAttackCooldown;
+    
+    [Header("Slam Attack")]
+    [SerializeField] private float _SlamAttackCooldown;
+    [SerializeField] private float _SlamAttackGravity;
+    [SerializeField] private float _PauseGravityTime;                       // Time til we start applying Gravity
     
     private bool _IsAttacking = false;                       // If the player is currently attacking
 
@@ -26,12 +31,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _GroundRadius;                // How far from the ground the character needs to be before being grounded
     [SerializeField] private LayerMask _GroundLayer;                    // Reference to the ground layer
     [SerializeField] private float _GravityModifier = 1.0f;
+    [SerializeField] private bool _ApplyGravity = true;                    // If we are to add gravity to the movement
     private float _Gravity = -9.81f;
     
     [Header("Jump Settings")]
     [SerializeField] private float _AirControl;                 // How much the character can move while not grounded
     [SerializeField] private float _JumpForce;
     private bool _PerformJump;                          // If we need to perform the jump
+    private float _ResetGravityModifier;                       // used to store the last gravity when required to toggle between scales
     
     [Header("Component")] 
     [SerializeField] private Rigidbody2D _Rbody;
@@ -39,8 +46,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer _Render;
     [SerializeField] private CapsuleCollider2D _Collider;                       // reference to the collider
 
-    [Header("Debug")] 
-    [SerializeField] private bool DebugMode = true;
+    [Header("Debug")] [SerializeField] private bool DebugMode = true;
     
 
     private PlayerInputs _Inputs;
@@ -126,11 +132,14 @@ public class PlayerController : MonoBehaviour
         {
             if (!IsGrounded())
             {
-                movementInput = new Vector2
+                if (_ApplyGravity)
                 {
-                    x = movementInput.x,
-                    y = _Gravity * _GravityModifier
-                };
+                    movementInput = new Vector2
+                    {
+                        x = movementInput.x,
+                        y = _Gravity * _GravityModifier
+                    };
+                }
             }
             else
             {
@@ -208,6 +217,7 @@ public class PlayerController : MonoBehaviour
         _IsAttacking = true;
         if(_Anim)
             _Anim.SetTrigger("Attack");
+        
 
         if (IsGrounded())
         {
@@ -215,7 +225,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(AttackCooldown(_JumpAttackCooldown));
+            StartCoroutine(AttackCooldown(_SlamAttackCooldown));
+            StartCoroutine(GravityReset());
+            _GravityModifier = 0.01f;
         }
     }
 
@@ -224,6 +236,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _CanMove = true;
         _IsAttacking = false;
+    }
+
+    private IEnumerator GravityReset()
+    {
+        yield return new WaitForSeconds(_PauseGravityTime);
+        _GravityModifier = 0.3f;
     }
 
     private float GetMovementSpeed()
