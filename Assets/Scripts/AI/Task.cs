@@ -32,4 +32,6 @@ public abstract class Task
         _Children.Add(child);
         child.Parent = this;
     }
+
+    public abstract ETaskStatus RunTask();
 }

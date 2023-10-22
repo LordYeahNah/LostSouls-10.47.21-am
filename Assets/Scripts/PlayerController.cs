@@ -21,17 +21,18 @@ public class PlayerController : MonoBehaviour
     
     [Header("Slam Attack")]
     [SerializeField] private float _SlamAttackCooldown;
-    [SerializeField] private float _SlamAttackGravity;
-    [SerializeField] private float _PauseGravityTime;                       // Time til we start applying Gravity
-    
+    [SerializeField] private float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
+    [SerializeField] private LayerMask _SlamLayer;
+    private bool _IsInSlamAttack = false;
     private bool _IsAttacking = false;                       // If the player is currently attacking
+    
 
     [Header("Gravity")] 
     [SerializeField] private Transform _GroundedCheckTransform;                     // Reference to the raycast start point        
     [SerializeField] private float _GroundRadius;                // How far from the ground the character needs to be before being grounded
     [SerializeField] private LayerMask _GroundLayer;                    // Reference to the ground layer
     [SerializeField] private float _GravityModifier = 1.0f;
-    [SerializeField] private bool _ApplyGravity = true;                    // If we are to add gravity to the movement
+    [SerializeField] private bool _ApplyGravity = false;                    // If we are to add gravity to the movement
     private float _Gravity = -9.81f;
     
     [Header("Jump Settings")]
@@ -83,6 +84,18 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(IsGrounded());
         }
+
+        if (_IsInSlamAttack)
+        {
+            if (Physics2D.OverlapCircle(_GroundedCheckTransform.position, 
+                    _GroundDistanceToAttack, _SlamLayer))
+            {
+                if (_Anim)
+                    _Anim.speed = 1;
+
+                _IsInSlamAttack = false;
+            }
+        }
         
         // Update the grounded check on the animator
         if(_Anim)
@@ -100,18 +113,6 @@ public class PlayerController : MonoBehaviour
         Vector2 movementInput = Vector2.zero;                   // define the movement input
 
         // Check if moving
-        if (movementDirection != 0)
-        {
-            if (_CanMove)
-            {
-                // Create the movement input
-                movementInput = new Vector2
-                {
-                    x = movementDirection + (GetMovementSpeed() * Time.deltaTime),
-                    y = 0f
-                };
-            }
-        }
 
         // If performing the jump
         if (_PerformJump)
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
             movementInput = new Vector2
             {
                 x = 0,
-                y = movementInput.y + _JumpForce
+                y = _JumpForce * Time.deltaTime
             };
             // Update animation
             if(_Anim)
@@ -132,25 +133,45 @@ public class PlayerController : MonoBehaviour
         {
             if (!IsGrounded())
             {
-                if (_ApplyGravity)
+                movementInput = new Vector2
                 {
-                    movementInput = new Vector2
-                    {
-                        x = movementInput.x,
-                        y = _Gravity * _GravityModifier
-                    };
-                }
+                    x = movementDirection * _MovementSpeed,
+                    y = (_Gravity * _GravityModifier)
+                };
+
+                movementInput = movementInput * Time.deltaTime;
             }
             else
             {
-                movementInput = new Vector2
+                if (movementDirection != 0)
                 {
-                    x = movementInput.x,
-                    y = 0f
-                };
+                    if (_CanMove)
+                    {
+                        // Create the movement input
+                        movementInput = new Vector2
+                        {
+                            x = movementDirection + (GetMovementSpeed() * Time.deltaTime),
+                            y = 0f
+                        };
+                    }
+                }
             }
         }
 
+        HandleMovementAnimation(movementDirection);
+        
+        if (!IsGrounded())
+        {
+            _Rbody.velocity += movementInput;
+        }
+        else
+        {
+            _Rbody.velocity = movementInput;
+        }
+    }
+
+    private void HandleMovementAnimation(float movementDirection)
+    {
         if (movementDirection > 0)
         {
             _Flipped = false;
@@ -181,15 +202,6 @@ public class PlayerController : MonoBehaviour
 
         if (_Anim)
             _Anim.SetBool("IsMoving", movementDirection != 0);
-
-        if (!IsGrounded())
-        {
-            _Rbody.velocity += movementInput;
-        }
-        else
-        {
-            _Rbody.velocity = movementInput;
-        }
     }
 
     public bool IsGrounded()
@@ -226,8 +238,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             StartCoroutine(AttackCooldown(_SlamAttackCooldown));
-            StartCoroutine(GravityReset());
-            _GravityModifier = 0.01f;
         }
     }
 
@@ -238,12 +248,6 @@ public class PlayerController : MonoBehaviour
         _IsAttacking = false;
     }
 
-    private IEnumerator GravityReset()
-    {
-        yield return new WaitForSeconds(_PauseGravityTime);
-        _GravityModifier = 0.3f;
-    }
-
     private float GetMovementSpeed()
     {
         if (IsGrounded())
@@ -251,5 +255,10 @@ public class PlayerController : MonoBehaviour
 
         return _AirControl;
     }
-    
+
+    public void OnPauseSlamAnimation()
+    {
+        _Anim.speed = 0f;
+        _IsInSlamAttack = true;
+    }
 }
