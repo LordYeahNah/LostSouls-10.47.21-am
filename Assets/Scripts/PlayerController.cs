@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _ColliderFacingLeft;                     // Position of the collider facing left
     private bool _Flipped = false;                          // If the sprite is flipped
     private bool _CanMove = true;                       // If the character can move
+
+    [Header("Attacks")] 
+    [SerializeField] private float _SweepAttackCooldown;
+    [SerializeField] private float _JumpAttackCooldown;
+    
+    private bool _IsAttacking = false;                       // If the player is currently attacking
 
     [Header("Gravity")] 
     [SerializeField] private Transform _GroundedCheckTransform;                     // Reference to the raycast start point        
@@ -83,21 +90,21 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (!_CanMove)
-            return;
-
         float movementDirection = _Inputs.Player.Move.ReadValue<float>();                   // Read the float value
         Vector2 movementInput = Vector2.zero;                   // define the movement input
 
         // Check if moving
         if (movementDirection != 0)
         {
-            // Create the movement input
-            movementInput = new Vector2
+            if (_CanMove)
             {
-                x = movementDirection + (GetMovementSpeed() * Time.deltaTime),
-                y = 0f
-            };
+                // Create the movement input
+                movementInput = new Vector2
+                {
+                    x = movementDirection + (GetMovementSpeed() * Time.deltaTime),
+                    y = 0f
+                };
+            }
         }
 
         // If performing the jump
@@ -191,6 +198,32 @@ public class PlayerController : MonoBehaviour
         {
             _PerformJump = true;
         }
+    }
+
+    public void Attack(InputAction.CallbackContext ctx)
+    {
+        if (_IsAttacking)
+            return;
+
+        _IsAttacking = true;
+        if(_Anim)
+            _Anim.SetTrigger("Attack");
+
+        if (IsGrounded())
+        {
+            StartCoroutine(AttackCooldown(_SweepAttackCooldown));
+        }
+        else
+        {
+            StartCoroutine(AttackCooldown(_JumpAttackCooldown));
+        }
+    }
+
+    private IEnumerator AttackCooldown(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _CanMove = true;
+        _IsAttacking = false;
     }
 
     private float GetMovementSpeed()
