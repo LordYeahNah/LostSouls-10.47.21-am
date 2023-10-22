@@ -8,11 +8,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")] 
-    [SerializeField] private float _MovementSpeed;
-    [SerializeField] private float _ColliderFacingRight;
-    [SerializeField] private float _ColliderFacingLeft;
-    private bool _Flipped = false;
-    private bool _CanMove = true;
+    [SerializeField] private float _MovementSpeed;                          // Speed the character moves at
+    [SerializeField] private float _ColliderFacingRight;                // Position of the collider facing right
+    [SerializeField] private float _ColliderFacingLeft;                     // Position of the collider facing left
+    private bool _Flipped = false;                          // If the sprite is flipped
+    private bool _CanMove = true;                       // If the character can move
 
     [Header("Gravity")] 
     [SerializeField] private Transform _GroundedCheckTransform;                     // Reference to the raycast start point        
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump Settings")]
     [SerializeField] private float _AirControl;                 // How much the character can move while not grounded
     [SerializeField] private float _JumpForce;
-    private bool _PerformJump;
+    private bool _PerformJump;                          // If we need to perform the jump
     
     [Header("Component")] 
     [SerializeField] private Rigidbody2D _Rbody;
@@ -40,7 +40,18 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _Inputs = new PlayerInputs();
+        _Inputs = new PlayerInputs();                       // Create new inputs
+
+        
+        // Attempt to get components, if haven't already
+        if (!_Rbody)
+            TryGetComponent(out _Rbody);
+        if (!_Anim)
+            TryGetComponent(out _Anim);
+        if (!_Render)
+            TryGetComponent(out _Render);
+        if (!_Collider)
+            TryGetComponent(out _Collider);
     }
 
     private void OnEnable()
@@ -60,6 +71,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log(IsGrounded());
         }
         
+        // Update the grounded check on the animator
         if(_Anim)
             _Anim.SetBool("IsGrounded", IsGrounded());
     }
@@ -74,11 +86,13 @@ public class PlayerController : MonoBehaviour
         if (!_CanMove)
             return;
 
-        float movementDirection = _Inputs.Player.Move.ReadValue<float>();
-        Vector2 movementInput = Vector2.zero;
+        float movementDirection = _Inputs.Player.Move.ReadValue<float>();                   // Read the float value
+        Vector2 movementInput = Vector2.zero;                   // define the movement input
 
+        // Check if moving
         if (movementDirection != 0)
         {
+            // Create the movement input
             movementInput = new Vector2
             {
                 x = movementDirection + (GetMovementSpeed() * Time.deltaTime),
@@ -86,17 +100,20 @@ public class PlayerController : MonoBehaviour
             };
         }
 
+        // If performing the jump
         if (_PerformJump)
         {
-            _Rbody.velocity = Vector2.zero;
+            _Rbody.velocity = Vector2.zero;                     // reset the vector velocity
+            // Apply the jump force
             movementInput = new Vector2
             {
                 x = 0,
                 y = movementInput.y + _JumpForce
             };
+            // Update animation
             if(_Anim)
                 _Anim.SetTrigger("Jump");
-            _PerformJump = false;
+            _PerformJump = false;                       // Reset the flag
         }
         else
         {

@@ -399,7 +399,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _GravityModifier: 0.3
-  _AirControl: 0
+  _AirControl: 2
   _JumpForce: 25
   _Rbody: {fileID: 160381639}
   _Anim: {fileID: 160381636}
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Target: {fileID: 160381638}
-  _LerpSpeed: 40
+  _LerpSpeed: 0.3
   _MinY: -2.72
   _MaxY: 0
   _MinX: -3.66
