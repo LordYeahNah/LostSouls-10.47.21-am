@@ -483,6 +483,7 @@ Transform:
   m_Children:
   - {fileID: 480271017}
   - {fileID: 1380734082}
+  - {fileID: 1610958412}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &160381639
@@ -527,13 +528,24 @@ MonoBehaviour:
   _MovementSpeed: 5
   _ColliderFacingRight: 0.1023303
   _ColliderFacingLeft: -0.1023303
+  _DamagePoints: 12
+  _CriticalHitChance: 0.215
+  _CriticalHitModifier: 1
+  _AttackDistance: 1.7
+  _AttackCastTransform: {fileID: 1610958412}
+  _DamageMask:
+    serializedVersion: 2
+    m_Bits: 128
   _SweepAttackCooldown: 0.35
+  _SweepAttackDPModifier: 1
   _SlamAttackCooldown: 0.45
   _GroundDistanceToAttack: 0.6
   _SlamLayer:
     serializedVersion: 2
     m_Bits: 64
+  _SlammAttackDPModifier: 1
   _SpinAttackCooldown: 0.35
+  _SpinAttackDPModifier: 1
   _GroundedCheckTransform: {fileID: 480271017}
   _GroundRadius: 0.3
   _GroundLayer:
@@ -1131,7 +1143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABYIeyKsQRybgIAACEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMuS2jAQ/BVK50DZLM/cEmDZHNillqT24ouwxliFLLkkmcdu8e8ZyTJ2yAnR81B3z8hfhEtTQmqVXmvONooB+d4j7ky+9drgC1zoQckd/4Qm54Mzm7sk6nPeqeUK8diVGVWA1Tz9IQ/CJUcIVpJnShcrdoCFMtYgnFFhAENaWVctEfrqkQv+9Oeu5Iqn4dSdPvE0j3o3PKYgLeg2NR4OZuOQ3I8Hw5Ddnw3mo2gym6760cwXVjIVtCiBORVt/fgpFMexT5OoL2Q4LakSgptAjthr6cW/06uTzjhFoZ5NPHB9cuCH3Dra3dK3LDNggw+aXpdco2N1T/JT1TYW1BxrVicqKu+a51O33PwX7dd0M62Kl+bWOHI32JynR2SYUmM7LnfhZYe4t+ZMxZHuBXzkIF/VWqtKMgxaXbnSysBw2f69C1vkkB5bvKb6AFZl63Uz1GakTsPNa78sBC/2LjQY1cBOKO+13wTQOJVfSNjviQktEHUs/hj4TQ/dhQqBZ66NxVBQKR29vaq0SyUr75lTU9mF0hI8HEiXIKmw1y22sY8DfIh1rn2IPFP3dMLlIda8iIcSD7f5UfQQ2qrzfVgmV+cNmPytsoJLaEm7wCv6tFBS1vvV9aQp21U6o2mn7FBx9u9qkXSSRfNoNGPxZD6ajKE/Hj1lk/0+m2ajeDKdM+J3j0vUScW2JhrswanJtrnEPWu+KL21pqXfdabpec0/C9WxnMtM7VININ/qDnfioPESfJFsxTgatANrufTzJl8JESo9AkvujRKvdHWxmiZtl4SU/KSsQxKy8J+QhDj4vstbDScOZ3d50+xGbn8BUEsDBBQAAAgIAABYIezOpyO6bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSslmagaWBiUWKoZmliZlpqq6piXGaWVJSmnmaiaGZuWWKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABYIeyKsQRybgIAACEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABYIezOpyO6bQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
+    dataString: UEsDBBQAAAgIAABYIez0su/NbQIAACQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMuS2jAQ/BVK50DZLM/cEmDZHNillqT24ouwxliFLLkkmcdu8e8ZyQI7zgnR81B3z8hfhEtTQmqVXmvONooB+d4j7ky+9ZrgC1zoQckd/4R7zgdnNndJ1Oe8U8sV4rErM6oAq3n6Qx6ES44QrCTPlC5W7AALZaxBOKPCAIa0sq5aIvTVIxf86c9dyRVPw6k7feJpHvVueExBWtBNajwczMYhuR8PhiG7PxvMR9FkNl31o5kvrGQqaFECcyqa+vFTKI5jnyZRX8hwWlIlBDeBHLHX0ot/p1cnnXGKQj2beOD65MAPuXW026VvWWbABh80vS65RsfqnuSnqm0sqDnWrE5UVN41z6duufkv2q/pZloVL/db48jdYHOeHpFhSo1tudyGly3i3pozFUe6F/CRg3xVa60qyTBodeVKKwPDZfP3IWyRQ3ps8JpqB6zKxuv7UO8jdRpuXvtlIXixd6HBqAZ2Qnmv/SaAxqn8QsJ+T0xogahj8cfAb3poL1QIPHNtLIaCSuno7VWlXSpZec+cmsoulJbg4UC6BEmFvW6xje0OsBNrXduJPFP3dMLlIXZ/EZ0SDzf5UdQJbdX5MSyTq/MGTP5WWcFlu5mLvKJRCyVlvWCmE3V1u0pnNG3XHSrO/l0ukk6yaB6NZiyezEeTMfTHo6dsst9n02wUT6ZzRvz2cYlKqdjWVINBODfZWClx0+7flN5a09JvO9P0vOafhWqZzmWmdqkGkG91hwdz0HgJvkm2Yhwt2oG1XPqJk6+ECJUegSWPRomXurpYTZOmS0JKflLWIQlZ+I9IQhz82OathhOHs7v8UXcjt79QSwMEFAAACAgAAFgh7M6nI7ptAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKyWZqBpYGJRYqhmaWJmWmqrqmJcZpZUlKaeZqJoZm5ZYpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAFgh7PSy781tAgAAJAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAFgh7M6nI7ptAAAAeAAAAAkAJAAAAAAAAAAAAAAAugIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAByAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -1159,11 +1171,43 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -2077,9 +2121,9 @@ GameObject:
   - component: {fileID: 691705853}
   - component: {fileID: 691705855}
   - component: {fileID: 691705856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GhoulController
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2097,7 +2141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -2121,7 +2165,7 @@ Transform:
   m_GameObject: {fileID: 691705847}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.997, y: -4.987, z: 0}
+  m_LocalPosition: {x: -0.91, y: -4.987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2225,7 +2269,9 @@ MonoBehaviour:
   _RBody: {fileID: 691705853}
   _Anim: {fileID: 1323479951}
   _PlayerRef: {fileID: 160381640}
-  _TargetDistance: 1
+  _TargetDistance: 4
+  _MaxHealth: 100
+  _CurrentHealth: 0
 --- !u!1 &723371625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,8 +3588,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00059998035, y: -0.2682, z: 0}
-    m_Extent: {x: 1.0274, y: 0.9282, z: 0}
+    m_Center: {x: 0, y: -0.26500002, z: 0}
+    m_Extent: {x: 1.0264, y: 0.93490005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3653,7 +3699,7 @@ GameObject:
   - component: {fileID: 1323479953}
   - component: {fileID: 1323479952}
   - component: {fileID: 1323479951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ghoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4386,6 +4432,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1610958411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1610958412}
+  m_Layer: 0
+  m_Name: AttackCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1610958412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610958411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.047, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 160381638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644970307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,7 +4473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644970308}
   - component: {fileID: 1644970309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

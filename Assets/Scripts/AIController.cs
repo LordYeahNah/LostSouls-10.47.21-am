@@ -24,7 +24,7 @@ public class AIController : MonoBehaviour
     [SerializeField] protected Rigidbody2D _RBody;
     [SerializeField] protected Animator _Anim;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         if (!_Seeker)
             TryGetComponent(out _Seeker);

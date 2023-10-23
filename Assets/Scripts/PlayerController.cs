@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
+
+public enum ESweeperAttackType
+{
+    SWEEP = 0,
+    SLAM = 1,
+    SPIN = 2,
+}
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,18 +22,33 @@ public class PlayerController : MonoBehaviour
     private bool _Flipped = false;                          // If the sprite is flipped
     private bool _CanMove = true;                       // If the character can move
 
+    [Header("General Combat")]
+    [SerializeField] private float _DamagePoints;                       // Points applied when damage is dealt
+    [SerializeField, Range(0f, 1f)] private float _CriticalHitChance;
+    [SerializeField] private float _CriticalHitModifier = 1.0f;
+    [SerializeField] private float _AttackDistance;                         // How far the enemy has to be to detect attack
+    [SerializeField] private Transform _AttackCastTransform;                    // Where the attack beings
+    [SerializeField] private LayerMask _DamageMask;
+    private ESweeperAttackType _AttackType;                            // Reference to the current attack type
+    
+
     [Header("Sweep Attack")] 
     [SerializeField] private float _SweepAttackCooldown;
+
+    [SerializeField] private float _SweepAttackDPModifier = 1.0f;
     
     [Header("Slam Attack")]
     [SerializeField] private float _SlamAttackCooldown;
     [SerializeField] private float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
     [SerializeField] private LayerMask _SlamLayer;
+    [SerializeField] private float _SlammAttackDPModifier = 1.0f;
     private bool _IsInSlamAttack = false;
     private bool _IsAttacking = false;                       // If the player is currently attacking
 
     [Header("Spin Attack")] 
     [SerializeField] private float _SpinAttackCooldown = 0.35f;
+
+    [SerializeField] private float _SpinAttackDPModifier = 1.0f;
     private bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
     
 
@@ -239,26 +260,65 @@ public class PlayerController : MonoBehaviour
         {
             if (!_SpinAttackEnabled)
             {
+                _AttackType = ESweeperAttackType.SWEEP;
                 StartCoroutine(AttackCooldown(_SweepAttackCooldown));
             }
             else
             {
                 StartCoroutine(AttackCooldown(_SpinAttackCooldown));
+                _AttackType = ESweeperAttackType.SPIN;
             }
         }
         else
         {
             StartCoroutine(AttackCooldown(_SlamAttackCooldown));
+            _AttackType = ESweeperAttackType.SLAM;
         }
     }
 
-    public void PerformHeavyAttack()
+    public void PerformAttack()
     {
-        _SpinAttackEnabled = true;
-        if (_Anim)
+        Vector2 direction = Vector2.zero;
+        if (_Flipped)
         {
-            _Anim.SetBool("AttackModifier", true);
+            direction = transform.TransformDirection(-Vector2.right);
         }
+        else
+        {
+            direction = transform.TransformDirection(Vector2.right);
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(_AttackCastTransform.position, direction, _AttackDistance, _DamageMask);
+        if (hit)
+        {
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                Debug.Log("Hit Enemy");
+                hit.collider.GetComponent<EnemyController>()?.TakeDamage(GenerateDamagePoints());
+            }
+        }
+    }
+
+    private float GenerateDamagePoints()
+    {
+        bool isCriticalHit = Random.Range(0f, 1f) < _CriticalHitChance;
+        float damagePoints = Random.Range((_DamagePoints - 4), _DamagePoints);
+        if (isCriticalHit)
+            damagePoints *= _CriticalHitModifier;
+
+        if (_AttackType == ESweeperAttackType.SPIN)
+        {
+            damagePoints *= _SpinAttackDPModifier;
+        } else if (_AttackType == ESweeperAttackType.SLAM)
+        {
+            damagePoints *= _SlammAttackDPModifier;
+        }
+        else
+        {
+            damagePoints *= _SweepAttackDPModifier;
+        }
+
+        return damagePoints;
     }
 
     public void ToggleSpinAttack(InputAction.CallbackContext ctx)

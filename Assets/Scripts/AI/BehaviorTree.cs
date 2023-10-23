@@ -8,6 +8,7 @@ public abstract class BehaviorTree : MonoBehaviour
     protected Blackboard _Blackboard;
 
     protected bool _Initialized = false;
+    public bool CanUpdate = true;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public abstract class BehaviorTree : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!_Initialized || _RootTask == null)
+        if (!_Initialized || _RootTask == null || !CanUpdate)
             return;
 
         _RootTask.RunTask();
