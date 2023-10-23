@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28213b0e732533c4d9a927e84487c11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Player: {fileID: 1004793697}
+  _Player: {fileID: 1004793699}
 --- !u!1 &211791814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2167,7 @@ MonoBehaviour:
   _Seeker: {fileID: 691705850}
   _RBody: {fileID: 691705853}
   _Anim: {fileID: 1323479951}
-  _PlayerRef: {fileID: 1004793697}
+  _PlayerRef: {fileID: 0}
   _TargetDistance: 4
   _MaxHealth: 100
   _CurrentHealth: 0
@@ -2780,7 +2780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004793698}
-  - component: {fileID: 1004793697}
+  - component: {fileID: 1004793699}
   - component: {fileID: 1004793696}
   - component: {fileID: 1004793695}
   - component: {fileID: 1004793694}
@@ -2859,7 +2859,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1004793697}
+      - m_Target: {fileID: 1004793699}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -2875,7 +2875,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1004793697}
+      - m_Target: {fileID: 1004793699}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 0
@@ -2891,7 +2891,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1004793697}
+      - m_Target: {fileID: 1004793699}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: ToggleSpinAttack
         m_Mode: 0
@@ -2937,56 +2937,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1004793697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004793693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7585705cfb1074602ace045bfcec23fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _MovementSpeed: 5
-  _ColliderFacingRight: 0.1023303
-  _ColliderFacingLeft: -0.1023303
-  _DamagePoints: 12
-  _CriticalHitChance: 0.215
-  _CriticalHitModifier: 1
-  _AttackDistance: 1.7
-  _AttackCastTransform: {fileID: 1610958412}
-  _DamageMask:
-    serializedVersion: 2
-    m_Bits: 128
-  _SweepAttackCooldown: 0.35
-  _SweepAttackForce: 100
-  _SweepAttackDPModifier: 1
-  _SlamAttackCooldown: 0.45
-  _GroundDistanceToAttack: 0.6
-  _SlamLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _SlammAttackDPModifier: 1
-  _SlamAttackForce: 10
-  _SpinAttackCooldown: 0.35
-  _SpinAttackForce: 10
-  _SpinAttackDPModifier: 1
-  _GroundedCheckTransform: {fileID: 480271017}
-  _GroundRadius: 0.3
-  _GroundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _GravityModifier: 1.4
-  _ApplyGravity: 1
-  _AirControl: 2
-  _JumpForce: 400
-  _Rbody: {fileID: 1004793696}
-  _Anim: {fileID: 160381636}
-  _Render: {fileID: 160381637}
-  _Collider: {fileID: 1004793694}
-  DebugMode: 0
 --- !u!4 &1004793698
 Transform:
   m_ObjectHideFlags: 0
@@ -3006,6 +2956,56 @@ Transform:
   - {fileID: 160381638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004793699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004793693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1f33a927794f38a8298e79b094afb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MovementSpeed: 5
+  _ColliderFacingRight: 0.1023303
+  _ColliderFacingLeft: -0.1023303
+  _DamagePoints: 12
+  _CriticalHitChance: 0.215
+  _CriticalHitModifier: 1
+  _AttackDistance: 1.7
+  _AttackCastTransform: {fileID: 1610958412}
+  _DamageMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _GroundedCheckTransform: {fileID: 480271017}
+  _GroundRadius: 0.3
+  _GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _GravityModifier: 1.4
+  _ApplyGravity: 1
+  _AirControl: 2
+  _JumpForce: 400
+  _Rbody: {fileID: 1004793696}
+  _Anim: {fileID: 160381636}
+  _Render: {fileID: 160381637}
+  _Collider: {fileID: 1004793694}
+  DebugMode: 0
+  _SweepAttackCooldown: 0.35
+  _SweepAttackForce: 100
+  _SweepAttackDPModifier: 1
+  _SlamAttackCooldown: 0.45
+  _GroundDistanceToAttack: 0.6
+  _SlamLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _SlammAttackDPModifier: 1.4
+  _SlamAttackForce: 100
+  _SpinAttackCooldown: 0.35
+  _SpinAttackForce: 100
+  _SpinAttackDPModifier: 1
 --- !u!1 &1018907520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,8 +3881,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0026500225, y: -0.26790002, z: 0}
-    m_Extent: {x: 1.03105, y: 0.93070006, z: 0}
+    m_Center: {x: -0.0027499795, y: -0.25805, z: 0}
+    m_Extent: {x: 1.0301499, y: 0.92955005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

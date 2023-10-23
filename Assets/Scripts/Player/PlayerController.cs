@@ -30,27 +30,8 @@ public abstract class PlayerController : MonoBehaviour
     [SerializeField] protected Transform _AttackCastTransform;                    // Where the attack beings
     [SerializeField] protected LayerMask _DamageMask;
     protected ESweeperAttackType _AttackType;                            // Reference to the current attack type
-    
-
-    [Header("Sweep Attack")] 
-    [SerializeField] protected float _SweepAttackCooldown;
-    [SerializeField] protected float _SweepAttackForce;                           // How much force to be applied to the enemy when struct        
-    [SerializeField] protected float _SweepAttackDPModifier = 1.0f;
-    
-    [Header("Slam Attack")]
-    [SerializeField] protected float _SlamAttackCooldown;
-    [SerializeField] protected float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
-    [SerializeField] protected LayerMask _SlamLayer;
-    [SerializeField] protected float _SlammAttackDPModifier = 1.0f;
-    [SerializeField] protected float _SlamAttackForce;
-    protected bool _IsInSlamAttack = false;
     protected bool _IsAttacking = false;                       // If the player is currently attacking
-
-    [Header("Spin Attack")] 
-    [SerializeField] protected float _SpinAttackCooldown = 0.35f;
-    [SerializeField] protected float _SpinAttackForce;
-    [SerializeField] protected float _SpinAttackDPModifier = 1.0f;
-    protected bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
+    protected bool _HeavyAttack = false;
     
 
     [Header("Gravity")] 
@@ -106,18 +87,6 @@ public abstract class PlayerController : MonoBehaviour
 
     protected virtual void Update()
     {
-
-        if (_IsInSlamAttack)
-        {
-            if (Physics2D.OverlapCircle(_GroundedCheckTransform.position, 
-                    _GroundDistanceToAttack, _SlamLayer))
-            {
-                if (_Anim)
-                    _Anim.speed = 1;
-
-                _IsInSlamAttack = false;
-            }
-        }
         
         // Update the grounded check on the animator
         if(_Anim)
@@ -243,7 +212,7 @@ public abstract class PlayerController : MonoBehaviour
         }
     }
 
-    public void Attack(InputAction.CallbackContext ctx)
+    public virtual void Attack(InputAction.CallbackContext ctx)
     {
         if (_IsAttacking)
             return;
@@ -252,26 +221,10 @@ public abstract class PlayerController : MonoBehaviour
         if(_Anim)
             _Anim.SetTrigger("Attack");
         
-
-        if (IsGrounded())
-        {
-            if (!_SpinAttackEnabled)
-            {
-                _AttackType = ESweeperAttackType.SWEEP;
-                StartCoroutine(AttackCooldown(_SweepAttackCooldown));
-            }
-            else
-            {
-                StartCoroutine(AttackCooldown(_SpinAttackCooldown));
-                _AttackType = ESweeperAttackType.SPIN;
-            }
-        }
-        else
-        {
-            StartCoroutine(AttackCooldown(_SlamAttackCooldown));
-            _AttackType = ESweeperAttackType.SLAM;
-        }
+        GenerateAttack();
     }
+
+    protected abstract void GenerateAttack();
 
     public void PerformAttack()
     {
@@ -302,9 +255,9 @@ public abstract class PlayerController : MonoBehaviour
 
     public void ToggleSpinAttack(InputAction.CallbackContext ctx)
     {
-        _SpinAttackEnabled = ctx.performed;
+        _HeavyAttack = ctx.performed;
         if(_Anim)
-            _Anim.SetBool("AttackModifier", _SpinAttackEnabled);
+            _Anim.SetBool("AttackModifier", _HeavyAttack);
     }
 
     protected IEnumerator AttackCooldown(float waitTime)
