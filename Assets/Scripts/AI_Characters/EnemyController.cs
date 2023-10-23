@@ -10,6 +10,11 @@ public class EnemyController : AIController
     [SerializeField] protected PlayerController _PlayerRef;                        // store reference to the player
     [SerializeField] protected float _TargetDistance;                     // How far the target should be before seeing
 
+    [Header("Combat Settings")] 
+    [SerializeField] protected float _AttackDistance = 0.5f;                        // How far the AI needs to be to attack the character
+    [SerializeField] protected bool _CanAttack = true;                         // If the character can perform an attack
+    [SerializeField] protected Transform _AttackCast;                           // where the attack cast starts
+    [SerializeField] protected float _AttackCastDistance = 2f;                      
     [Header("Stats")] 
     [SerializeField] protected float _MaxHealth;
     [SerializeField] protected float _CurrentHealth;
@@ -37,6 +42,37 @@ public class EnemyController : AIController
 
     private void Update()
     {
+    }
+
+    public virtual void PerformAttack(GameObject target)
+    {
+        if (!_CanAttack)
+            return;
+
+        if (_Anim)
+            _Anim.SetTrigger("Attack");
+
+
+        Vector2 direction = Vector2.zero;
+        if (_Render.flipX)
+        {
+            direction = this.transform.TransformDirection(-Vector2.right);
+        }
+        else
+        {
+            direction = this.transform.TransformDirection(Vector2.right);
+        }
+
+        LayerMask playerLayer = LayerMask.NameToLayer("Player");
+        RaycastHit2D hit = Physics2D.Raycast(_AttackCast.position, direction, _AttackCastDistance, playerLayer);
+        if (hit.collider.CompareTag("Player"))
+        {
+            PlayerController player = hit.collider.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                // TODO: Take Damage
+            }
+        }
     }
 
     private void WithinTargetRange()
@@ -69,6 +105,7 @@ public class EnemyController : AIController
     {
         base.CreateBlackboard();
         _Blackboard.SetValue("HasTarget", false);
+        _Blackboard.SetValue("MinAttackDistance", _AttackDistance);
     }
 
     public void TakeDamage(float dp, Vector3 attackPosition, float attackForce)

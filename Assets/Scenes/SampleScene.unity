@@ -1628,7 +1628,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.43, y: -0.43, z: -10}
+  m_LocalPosition: {x: 13.22, y: -0.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2169,6 +2169,10 @@ MonoBehaviour:
   _Anim: {fileID: 1323479951}
   _PlayerRef: {fileID: 0}
   _TargetDistance: 4
+  _AttackDistance: 0.5
+  _CanAttack: 1
+  _AttackCast: {fileID: 0}
+  _AttackCastDistance: 2
   _MaxHealth: 100
   _CurrentHealth: 0
   _EyeLight: {fileID: 1644970307}
@@ -3881,8 +3885,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0027499795, y: -0.25805, z: 0}
-    m_Extent: {x: 1.0301499, y: 0.92955005, z: 0}
+    m_Center: {x: 0.0041499734, y: -0.26515, z: 0}
+    m_Extent: {x: 1.0236499, y: 0.93125004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3923,7 +3927,7 @@ Transform:
   m_GameObject: {fileID: 1233006236}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.777, y: 0, z: 0}
+  m_LocalPosition: {x: 5.741, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5034,7 +5038,7 @@ Transform:
   m_GameObject: {fileID: 1726945036}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.763, y: 0, z: 0}
+  m_LocalPosition: {x: 5.749, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
