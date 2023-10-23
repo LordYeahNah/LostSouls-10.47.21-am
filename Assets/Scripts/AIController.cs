@@ -36,9 +36,6 @@ public class AIController : MonoBehaviour
     {
         CreateBlackboard();
         _Tree.Initialize(_Blackboard);
-
-        _Blackboard.SetValue("MoveToLocation", new Vector2(-8, -4.51f));
-        _Blackboard.SetValue("HasMoveToLocation", true);
     }
 
     public void UpdatePath(Vector2 position)
