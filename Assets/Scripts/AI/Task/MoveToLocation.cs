@@ -25,7 +25,6 @@ public class MoveToLocation : Task
                 AIController controller = board.GetValue<GameObject>("Self").GetComponent<AIController>();
                 Vector2 location = board.GetValue<Vector2>("MoveToLocation");
                 float distance = Vector2.Distance(controller.transform.position, location);
-                Debug.Log(distance);
                 if (distance > STOPPING_DISTANCE)
                 {
                     controller.UpdatePath(location);

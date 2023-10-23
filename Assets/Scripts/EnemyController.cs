@@ -6,9 +6,8 @@ using UnityEngine;
 public class EnemyController : AIController
 {
     [Header("Target Settings")]
-    [SerializeField] private PlayerController _PlayerRef;                        // store reference to the player
-    [SerializeField] private float _TargetDistance;                     // How far the target should be before seeing
-    
+    [SerializeField] protected PlayerController _PlayerRef;                        // store reference to the player
+    [SerializeField] protected float _TargetDistance;                     // How far the target should be before seeing
     
 
     protected override void Start()
@@ -16,6 +15,16 @@ public class EnemyController : AIController
         base.Start();
         
         InvokeRepeating(nameof(WithinTargetRange), 0f, 1.0f);
+    }
+
+    private void Update()
+    {
+        if (_PlayerRef)
+        {
+            Vector2 enemyWorldDirection = this.transform.TransformDirection(Vector2.right);
+            Vector2 playerDirection = this.transform.position - _PlayerRef.transform.position;
+            Debug.Log(Vector2.Dot(enemyWorldDirection, playerDirection));
+        }
     }
 
     private void WithinTargetRange()
@@ -29,5 +38,11 @@ public class EnemyController : AIController
                 _Blackboard.SetValue("Target", _PlayerRef.gameObject);
             }
         }
+    }
+
+    protected override void CreateBlackboard()
+    {
+        base.CreateBlackboard();
+        _Blackboard.SetValue("HasTarget", false);
     }
 }

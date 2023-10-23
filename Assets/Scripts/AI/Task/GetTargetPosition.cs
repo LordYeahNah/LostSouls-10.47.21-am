@@ -19,7 +19,7 @@ public class GetTargetPosition : Task
             GameObject target = board.GetValue<GameObject>("Target");
             if (target)
             {
-                board.SetValue("MoveToLocation", target.transform.position);
+                board.SetValue("MoveToLocation", new Vector2(target.transform.position.x, target.transform.position.y));
                 return ETaskStatus.SUCCESS;
             }
         }

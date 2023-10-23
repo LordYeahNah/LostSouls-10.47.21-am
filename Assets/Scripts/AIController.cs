@@ -89,11 +89,13 @@ public class AIController : MonoBehaviour
 
         if (force.x > 0)
         {
-            _Render.flipX = false;
+            if (_Render.flipX)
+                _Render.flipX = false;
         }
         else if(force.x < 0)
         {
-            _Render.flipX = true;
+            if(!_Render.flipX)
+                _Render.flipX = true;
         }
     }
 
