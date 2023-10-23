@@ -20,9 +20,9 @@ public class AIController : MonoBehaviour
     
     [Header("Components")]
     [SerializeField] private SpriteRenderer _Render;
-
     [SerializeField] private Seeker _Seeker;
     [SerializeField] private Rigidbody2D _RBody;
+    [SerializeField] private Animator _Anim;
 
     private void Awake()
     {
@@ -32,10 +32,28 @@ public class AIController : MonoBehaviour
             TryGetComponent(out _RBody);
     }
 
+    protected virtual void Start()
+    {
+        CreateBlackboard();
+        _Tree.Initialize(_Blackboard);
+
+        _Blackboard.SetValue("MoveToLocation", new Vector2(-8, -4.51f));
+        _Blackboard.SetValue("HasMoveToLocation", true);
+    }
+
     public void UpdatePath(Vector2 position)
     {
         if(_Seeker.IsDone())
             _Seeker.StartPath(_RBody.position, position, OnPathComplete);
+        
+        _Anim.SetBool("IsMoving", true);
+    }
+
+    public void StopMovement()
+    {
+        _Path = null;
+        _Anim.SetBool("IsMoving", false);
+        _RBody.velocity = Vector2.zero;
     }
 
     private void FixedUpdate()
@@ -95,7 +113,9 @@ public class AIController : MonoBehaviour
     {
         _Blackboard = new Blackboard();
         _Blackboard.SetValue<GameObject>("Self", this.gameObject);
-        _Blackboard.SetValue<Transform>("Target", null);
+        _Blackboard.SetValue<GameObject>("Target", null);
+        _Blackboard.SetValue("HasMoveToLocation", false);
+        _Blackboard.SetValue("MoveToLocation", Vector2.zero);
 
     }
 }

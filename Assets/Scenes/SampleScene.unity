@@ -2076,6 +2076,7 @@ GameObject:
   - component: {fileID: 691705852}
   - component: {fileID: 691705854}
   - component: {fileID: 691705853}
+  - component: {fileID: 691705855}
   m_Layer: 0
   m_Name: GhoulController
   m_TagString: Untagged
@@ -2206,9 +2207,23 @@ MonoBehaviour:
   TargetTransform: {fileID: 1380734082}
   _MovementSpeed: 20
   _NextWayPointDistance: 3
+  _Tree: {fileID: 0}
   _Render: {fileID: 1323479952}
   _Seeker: {fileID: 691705850}
   _RBody: {fileID: 691705853}
+  _Anim: {fileID: 0}
+--- !u!114 &691705855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691705847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c65a21b542d7d0429bb9b131eac9436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &723371625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,8 +3540,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0011000037, y: -0.26575, z: 0}
-    m_Extent: {x: 1.02, y: 0.91965, z: 0}
+    m_Center: {x: 0.000050008297, y: -0.25869998, z: 0}
+    m_Extent: {x: 1.0336499, y: 0.9302, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
