@@ -532,6 +532,7 @@ MonoBehaviour:
   _SlamLayer:
     serializedVersion: 2
     m_Bits: 64
+  _SpinAttackCooldown: 0.35
   _GroundedCheckTransform: {fileID: 480271017}
   _GroundRadius: 0.3
   _GroundLayer:
@@ -607,6 +608,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9181c04d-d2cf-48e3-92c0-6e4c25081a6f
     m_ActionName: 'Player/Attack[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 160381640}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ToggleSpinAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f669f6d9-1f11-4242-81e4-bc6381078870
+    m_ActionName: 'Player/HeavyAttackModifier[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3274,8 +3291,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00079995394, y: -0.26945, z: 0}
-    m_Extent: {x: 1.0155001, y: 0.93125004, z: 0}
+    m_Center: {x: 0.0071499944, y: -0.25945, z: 0}
+    m_Extent: {x: 1.02755, y: 0.93075, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

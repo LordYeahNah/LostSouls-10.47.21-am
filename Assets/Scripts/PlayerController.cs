@@ -252,6 +252,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PerformHeavyAttack()
+    {
+        _SpinAttackEnabled = true;
+        if (_Anim)
+        {
+            _Anim.SetBool("AttackModifier", true);
+        }
+    }
+
     public void ToggleSpinAttack(InputAction.CallbackContext ctx)
     {
         _SpinAttackEnabled = ctx.performed;
@@ -264,6 +273,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _CanMove = true;
         _IsAttacking = false;
+        if (_SpinAttackEnabled)
+            _SpinAttackEnabled = false;
     }
 
     private float GetMovementSpeed()
