@@ -10,10 +10,13 @@ public class EnemyController : MonoBehaviour
     public Transform TargetTransform;
     [SerializeField] private float _MovementSpeed;
     [SerializeField] private float _NextWayPointDistance;
-
     private Path _Path;
     private int _CurrentWaypoint = 0;
     private bool _HasReachedPath = false;
+
+    [Header("AI")] 
+    [SerializeField] private BehaviorTree _Tree;
+    private Blackboard _Blackboard;
     
     [Header("Components")]
     [SerializeField] private SpriteRenderer _Render;
@@ -27,14 +30,12 @@ public class EnemyController : MonoBehaviour
             TryGetComponent(out _Seeker);
         if (_RBody)
             TryGetComponent(out _RBody);
-        
-        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
     }
 
-    private void UpdatePath()
+    private void UpdatePath(Vector2 position)
     {
         if(_Seeker.IsDone())
-            _Seeker.StartPath(_RBody.position, TargetTransform.position, OnPathComplete);
+            _Seeker.StartPath(_RBody.position, position, OnPathComplete);
     }
 
     private void FixedUpdate()
@@ -75,7 +76,7 @@ public class EnemyController : MonoBehaviour
         {
             _Render.flipX = false;
         }
-        else
+        else if(force.x < 0)
         {
             _Render.flipX = true;
         }
@@ -88,5 +89,13 @@ public class EnemyController : MonoBehaviour
             _Path = p;
             _CurrentWaypoint = 0;
         }
+    }
+
+    protected virtual void CreateBlackboard()
+    {
+        _Blackboard = new Blackboard();
+        _Blackboard.SetValue<GameObject>("Self", this.gameObject);
+        _Blackboard.SetValue<Transform>("Target", null);
+
     }
 }

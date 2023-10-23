@@ -2190,7 +2190,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &691705854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 1380734082}
-  _MovementSpeed: 200
+  _MovementSpeed: 20
   _NextWayPointDistance: 3
   _Render: {fileID: 1323479952}
   _Seeker: {fileID: 691705850}
@@ -3525,8 +3525,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.000050008297, y: -0.26920003, z: 0}
-    m_Extent: {x: 1.01805, y: 0.9258, z: 0}
+    m_Center: {x: -0.0011000037, y: -0.26575, z: 0}
+    m_Extent: {x: 1.02, y: 0.91965, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
