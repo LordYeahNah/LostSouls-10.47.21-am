@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sweep Attack")] 
     [SerializeField] private float _SweepAttackCooldown;
-
+    [SerializeField] private float _SweepAttackForce;                           // How much force to be applied to the enemy when struct        
     [SerializeField] private float _SweepAttackDPModifier = 1.0f;
     
     [Header("Slam Attack")]
@@ -42,12 +42,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
     [SerializeField] private LayerMask _SlamLayer;
     [SerializeField] private float _SlammAttackDPModifier = 1.0f;
+    [SerializeField] private float _SlamAttackForce;
     private bool _IsInSlamAttack = false;
     private bool _IsAttacking = false;                       // If the player is currently attacking
 
     [Header("Spin Attack")] 
     [SerializeField] private float _SpinAttackCooldown = 0.35f;
-
+    [SerializeField] private float _SpinAttackForce;
     [SerializeField] private float _SpinAttackDPModifier = 1.0f;
     private bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
     
@@ -294,7 +295,8 @@ public class PlayerController : MonoBehaviour
             if(hit.collider.CompareTag("Enemy"))
             {
                 Debug.Log("Hit Enemy");
-                hit.collider.GetComponent<EnemyController>()?.TakeDamage(GenerateDamagePoints());
+                hit.collider.GetComponent<EnemyController>()?.TakeDamage(GenerateDamagePoints(), 
+                    _Rbody.position, GetAttackForce());
             }
         }
     }
@@ -319,6 +321,21 @@ public class PlayerController : MonoBehaviour
         }
 
         return damagePoints;
+    }
+
+    private float GetAttackForce()
+    {
+        switch (_AttackType)
+        {
+            case ESweeperAttackType.SLAM:
+                return _SlamAttackForce;
+            case ESweeperAttackType.SPIN:
+                return _SpinAttackForce;
+            case ESweeperAttackType.SWEEP:
+                return _SweepAttackForce;
+        }
+
+        return 0f;
     }
 
     public void ToggleSpinAttack(InputAction.CallbackContext ctx)

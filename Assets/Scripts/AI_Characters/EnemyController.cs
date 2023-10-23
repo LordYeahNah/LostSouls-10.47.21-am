@@ -37,12 +37,6 @@ public class EnemyController : AIController
 
     private void Update()
     {
-        if (_PlayerRef)
-        {
-            Vector2 enemyWorldDirection = this.transform.TransformDirection(Vector2.right);
-            Vector2 playerDirection = this.transform.position - _PlayerRef.transform.position;
-            Debug.Log(Vector2.Dot(enemyWorldDirection, playerDirection));
-        }
     }
 
     private void WithinTargetRange()
@@ -50,10 +44,23 @@ public class EnemyController : AIController
         float currentDistance = Vector2.Distance(this.transform.position, _PlayerRef.transform.position);
         if (currentDistance < _TargetDistance)
         {
-            if (_Blackboard != null)
+            Vector2 right = this.transform.TransformDirection(Vector2.right);
+            Vector2 toOther = this.transform.position - _PlayerRef.transform.position;
+            if (_Render.flipX)
             {
-                _Blackboard.SetValue("HasTarget", true);
-                _Blackboard.SetValue("Target", _PlayerRef.gameObject);
+                if (Vector2.Dot(right, toOther) > 0)
+                {
+                    _Blackboard.SetValue("HasTarget", true);
+                    _Blackboard.SetValue("Target", _PlayerRef.gameObject);
+                }
+            }
+            else
+            {
+                if (Vector2.Dot(right, toOther) < 0)
+                {
+                    _Blackboard.SetValue("HasTarget", true);
+                    _Blackboard.SetValue("Target", _PlayerRef.gameObject);
+                }
             }
         }
     }
@@ -64,7 +71,7 @@ public class EnemyController : AIController
         _Blackboard.SetValue("HasTarget", false);
     }
 
-    public void TakeDamage(float dp)
+    public void TakeDamage(float dp, Vector3 attackPosition, float attackForce)
     {
         _CurrentHealth -= dp;
         if (_CurrentHealth <= 0)
@@ -82,7 +89,27 @@ public class EnemyController : AIController
         {
             if(_Anim)
                 _Anim.SetTrigger("TakeHit");
+            
+            ApplyAttackForce(attackPosition, attackForce);
         }
+    }
+
+    private void ApplyAttackForce(Vector3 attackPosition, float attackForce)
+    {
+        Vector2 right = this.transform.TransformDirection(Vector2.right);
+        Vector2 otherPosition = this.transform.position - attackPosition;
+        Vector2 forceToApply = Vector2.zero;
+        
+        if (Vector2.Dot(Vector2.right, otherPosition) > 0)
+        {
+            forceToApply = this.transform.TransformDirection(Vector2.right) * attackForce;
+        }
+        else
+        {
+            forceToApply = this.transform.TransformDirection(-Vector2.zero) * attackForce;
+        }
+        
+        _RBody.AddForce(forceToApply * Time.deltaTime);
     }
 
     protected IEnumerator DeathDestroy()
