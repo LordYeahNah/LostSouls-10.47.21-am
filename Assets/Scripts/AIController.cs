@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyController : MonoBehaviour
+public class AIController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public Transform TargetTransform;
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
             TryGetComponent(out _RBody);
     }
 
-    private void UpdatePath(Vector2 position)
+    public void UpdatePath(Vector2 position)
     {
         if(_Seeker.IsDone())
             _Seeker.StartPath(_RBody.position, position, OnPathComplete);

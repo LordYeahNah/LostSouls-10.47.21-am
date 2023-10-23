@@ -6,6 +6,13 @@ public class GhoulBehaviorTree : BehaviorTree
 {
     protected override Task CreateTree()
     {
-        
+        return new Selector(this, new List<Task>
+        {
+            new Sequence(this, new List<Task>
+            {
+                new HasMoveToLocation(this),
+
+            })
+        });
     }
 }
