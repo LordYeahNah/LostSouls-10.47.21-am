@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _SlamLayer;
     private bool _IsInSlamAttack = false;
     private bool _IsAttacking = false;                       // If the player is currently attacking
+
+    [Header("Spin Attack")] 
+    [SerializeField] private float _SpinAttackCooldown = 0.35f;
+    private bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
     
 
     [Header("Gravity")] 
@@ -233,12 +237,26 @@ public class PlayerController : MonoBehaviour
 
         if (IsGrounded())
         {
-            StartCoroutine(AttackCooldown(_SweepAttackCooldown));
+            if (!_SpinAttackEnabled)
+            {
+                StartCoroutine(AttackCooldown(_SweepAttackCooldown));
+            }
+            else
+            {
+                StartCoroutine(AttackCooldown(_SpinAttackCooldown));
+            }
         }
         else
         {
             StartCoroutine(AttackCooldown(_SlamAttackCooldown));
         }
+    }
+
+    public void ToggleSpinAttack(InputAction.CallbackContext ctx)
+    {
+        _SpinAttackEnabled = ctx.performed;
+        if(_Anim)
+            _Anim.SetBool("AttackModifier", _SpinAttackEnabled);
     }
 
     private IEnumerator AttackCooldown(float waitTime)
