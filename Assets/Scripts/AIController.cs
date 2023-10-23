@@ -10,21 +10,21 @@ public class AIController : MonoBehaviour
     public Transform TargetTransform;
     [SerializeField] private float _MovementSpeed;
     [SerializeField] private float _NextWayPointDistance;
-    private Path _Path;
-    private int _CurrentWaypoint = 0;
-    private bool _HasReachedPath = false;
+    protected Path _Path;
+    protected int _CurrentWaypoint = 0;
+    protected bool _HasReachedPath = false;
 
     [Header("AI")] 
-    [SerializeField] private BehaviorTree _Tree;
-    private Blackboard _Blackboard;
+    [SerializeField] protected BehaviorTree _Tree;
+    protected Blackboard _Blackboard;
     
     [Header("Components")]
-    [SerializeField] private SpriteRenderer _Render;
-    [SerializeField] private Seeker _Seeker;
-    [SerializeField] private Rigidbody2D _RBody;
-    [SerializeField] private Animator _Anim;
+    [SerializeField] protected SpriteRenderer _Render;
+    [SerializeField] protected Seeker _Seeker;
+    [SerializeField] protected Rigidbody2D _RBody;
+    [SerializeField] protected Animator _Anim;
 
-    private void Awake()
+    protected void Awake()
     {
         if (!_Seeker)
             TryGetComponent(out _Seeker);
@@ -56,7 +56,7 @@ public class AIController : MonoBehaviour
         _RBody.velocity = Vector2.zero;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         HandleMovement();
     }
@@ -100,7 +100,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private void OnPathComplete(Path p)
+    protected void OnPathComplete(Path p)
     {
         if (!p.error)
         {
