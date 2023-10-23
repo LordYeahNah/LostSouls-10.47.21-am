@@ -90,7 +90,7 @@ public class EnemyController : AIController
             if(_Anim)
                 _Anim.SetTrigger("TakeHit");
             
-            ApplyAttackForce(attackPosition, attackForce);
+           // ApplyAttackForce(attackPosition, attackForce);
         }
     }
 

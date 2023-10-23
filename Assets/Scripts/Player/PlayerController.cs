@@ -13,72 +13,72 @@ public enum ESweeperAttackType
     SPIN = 2,
 }
 
-public class PlayerController : MonoBehaviour
+public abstract class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")] 
-    [SerializeField] private float _MovementSpeed;                          // Speed the character moves at
-    [SerializeField] private float _ColliderFacingRight;                // Position of the collider facing right
-    [SerializeField] private float _ColliderFacingLeft;                     // Position of the collider facing left
-    private bool _Flipped = false;                          // If the sprite is flipped
-    private bool _CanMove = true;                       // If the character can move
+    [SerializeField] protected float _MovementSpeed;                          // Speed the character moves at
+    [SerializeField] protected float _ColliderFacingRight;                // Position of the collider facing right
+    [SerializeField] protected float _ColliderFacingLeft;                     // Position of the collider facing left
+    protected bool _Flipped = false;                          // If the sprite is flipped
+    protected bool _CanMove = true;                       // If the character can move
 
     [Header("General Combat")]
-    [SerializeField] private float _DamagePoints;                       // Points applied when damage is dealt
-    [SerializeField, Range(0f, 1f)] private float _CriticalHitChance;
-    [SerializeField] private float _CriticalHitModifier = 1.0f;
-    [SerializeField] private float _AttackDistance;                         // How far the enemy has to be to detect attack
-    [SerializeField] private Transform _AttackCastTransform;                    // Where the attack beings
-    [SerializeField] private LayerMask _DamageMask;
-    private ESweeperAttackType _AttackType;                            // Reference to the current attack type
+    [SerializeField] protected float _DamagePoints;                       // Points applied when damage is dealt
+    [SerializeField, Range(0f, 1f)] protected float _CriticalHitChance;
+    [SerializeField] protected float _CriticalHitModifier = 1.0f;
+    [SerializeField] protected float _AttackDistance;                         // How far the enemy has to be to detect attack
+    [SerializeField] protected Transform _AttackCastTransform;                    // Where the attack beings
+    [SerializeField] protected LayerMask _DamageMask;
+    protected ESweeperAttackType _AttackType;                            // Reference to the current attack type
     
 
     [Header("Sweep Attack")] 
-    [SerializeField] private float _SweepAttackCooldown;
-    [SerializeField] private float _SweepAttackForce;                           // How much force to be applied to the enemy when struct        
-    [SerializeField] private float _SweepAttackDPModifier = 1.0f;
+    [SerializeField] protected float _SweepAttackCooldown;
+    [SerializeField] protected float _SweepAttackForce;                           // How much force to be applied to the enemy when struct        
+    [SerializeField] protected float _SweepAttackDPModifier = 1.0f;
     
     [Header("Slam Attack")]
-    [SerializeField] private float _SlamAttackCooldown;
-    [SerializeField] private float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
-    [SerializeField] private LayerMask _SlamLayer;
-    [SerializeField] private float _SlammAttackDPModifier = 1.0f;
-    [SerializeField] private float _SlamAttackForce;
-    private bool _IsInSlamAttack = false;
-    private bool _IsAttacking = false;                       // If the player is currently attacking
+    [SerializeField] protected float _SlamAttackCooldown;
+    [SerializeField] protected float _GroundDistanceToAttack;                     // How far is required to be before finishing the attack
+    [SerializeField] protected LayerMask _SlamLayer;
+    [SerializeField] protected float _SlammAttackDPModifier = 1.0f;
+    [SerializeField] protected float _SlamAttackForce;
+    protected bool _IsInSlamAttack = false;
+    protected bool _IsAttacking = false;                       // If the player is currently attacking
 
     [Header("Spin Attack")] 
-    [SerializeField] private float _SpinAttackCooldown = 0.35f;
-    [SerializeField] private float _SpinAttackForce;
-    [SerializeField] private float _SpinAttackDPModifier = 1.0f;
-    private bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
+    [SerializeField] protected float _SpinAttackCooldown = 0.35f;
+    [SerializeField] protected float _SpinAttackForce;
+    [SerializeField] protected float _SpinAttackDPModifier = 1.0f;
+    protected bool _SpinAttackEnabled = false;                        // If we are wanting to perform a spin attack
     
 
     [Header("Gravity")] 
-    [SerializeField] private Transform _GroundedCheckTransform;                     // Reference to the raycast start point        
-    [SerializeField] private float _GroundRadius;                // How far from the ground the character needs to be before being grounded
-    [SerializeField] private LayerMask _GroundLayer;                    // Reference to the ground layer
-    [SerializeField] private float _GravityModifier = 1.0f;
-    [SerializeField] private bool _ApplyGravity = false;                    // If we are to add gravity to the movement
-    private float _Gravity = -9.81f;
+    [SerializeField] protected Transform _GroundedCheckTransform;                     // Reference to the raycast start point        
+    [SerializeField] protected float _GroundRadius;                // How far from the ground the character needs to be before being grounded
+    [SerializeField] protected LayerMask _GroundLayer;                    // Reference to the ground layer
+    [SerializeField] protected float _GravityModifier = 1.0f;
+    [SerializeField] protected bool _ApplyGravity = false;                    // If we are to add gravity to the movement
+    protected float _Gravity = -9.81f;
     
     [Header("Jump Settings")]
-    [SerializeField] private float _AirControl;                 // How much the character can move while not grounded
-    [SerializeField] private float _JumpForce;
-    private bool _PerformJump;                          // If we need to perform the jump
-    private float _ResetGravityModifier;                       // used to store the last gravity when required to toggle between scales
+    [SerializeField] protected float _AirControl;                 // How much the character can move while not grounded
+    [SerializeField] protected float _JumpForce;
+    protected bool _PerformJump;                          // If we need to perform the jump
+    protected float _ResetGravityModifier;                       // used to store the last gravity when required to toggle between scales
     
     [Header("Component")] 
-    [SerializeField] private Rigidbody2D _Rbody;
-    [SerializeField] private Animator _Anim;
-    [SerializeField] private SpriteRenderer _Render;
-    [SerializeField] private CapsuleCollider2D _Collider;                       // reference to the collider
+    [SerializeField] protected Rigidbody2D _Rbody;
+    [SerializeField] protected Animator _Anim;
+    [SerializeField] protected SpriteRenderer _Render;
+    [SerializeField] protected CapsuleCollider2D _Collider;                       // reference to the collider
 
-    [Header("Debug")] [SerializeField] private bool DebugMode = true;
+    [Header("Debug")] [SerializeField] protected bool DebugMode = true;
     
 
-    private PlayerInputs _Inputs;
+    protected PlayerInputs _Inputs;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _Inputs = new PlayerInputs();                       // Create new inputs
 
@@ -94,22 +94,18 @@ public class PlayerController : MonoBehaviour
             TryGetComponent(out _Collider);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _Inputs.Enable();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         _Inputs.Disable();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (DebugMode)
-        {
-            Debug.Log(IsGrounded());
-        }
 
         if (_IsInSlamAttack)
         {
@@ -128,12 +124,12 @@ public class PlayerController : MonoBehaviour
             _Anim.SetBool("IsGrounded", IsGrounded());
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         HandleMovement();
     }
 
-    private void HandleMovement()
+    protected void HandleMovement()
     {
         float movementDirection = _Inputs.Player.Move.ReadValue<float>();                   // Read the float value
         Vector2 movementInput = Vector2.zero;                   // define the movement input
@@ -196,7 +192,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleMovementAnimation(float movementDirection)
+    protected virtual void HandleMovementAnimation(float movementDirection)
     {
         if (movementDirection > 0)
         {
@@ -301,42 +297,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private float GenerateDamagePoints()
-    {
-        bool isCriticalHit = Random.Range(0f, 1f) < _CriticalHitChance;
-        float damagePoints = Random.Range((_DamagePoints - 4), _DamagePoints);
-        if (isCriticalHit)
-            damagePoints *= _CriticalHitModifier;
-
-        if (_AttackType == ESweeperAttackType.SPIN)
-        {
-            damagePoints *= _SpinAttackDPModifier;
-        } else if (_AttackType == ESweeperAttackType.SLAM)
-        {
-            damagePoints *= _SlammAttackDPModifier;
-        }
-        else
-        {
-            damagePoints *= _SweepAttackDPModifier;
-        }
-
-        return damagePoints;
-    }
-
-    private float GetAttackForce()
-    {
-        switch (_AttackType)
-        {
-            case ESweeperAttackType.SLAM:
-                return _SlamAttackForce;
-            case ESweeperAttackType.SPIN:
-                return _SpinAttackForce;
-            case ESweeperAttackType.SWEEP:
-                return _SweepAttackForce;
-        }
-
-        return 0f;
-    }
+    protected abstract float GenerateDamagePoints();
+    protected abstract float GetAttackForce();
 
     public void ToggleSpinAttack(InputAction.CallbackContext ctx)
     {
@@ -345,13 +307,17 @@ public class PlayerController : MonoBehaviour
             _Anim.SetBool("AttackModifier", _SpinAttackEnabled);
     }
 
-    private IEnumerator AttackCooldown(float waitTime)
+    protected IEnumerator AttackCooldown(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        
+        AttackReset();
+    }
+
+    protected virtual void AttackReset()
+    {
         _CanMove = true;
         _IsAttacking = false;
-        if (_SpinAttackEnabled)
-            _SpinAttackEnabled = false;
     }
 
     private float GetMovementSpeed()
@@ -360,11 +326,5 @@ public class PlayerController : MonoBehaviour
             return _MovementSpeed;
 
         return _AirControl;
-    }
-
-    public void OnPauseSlamAnimation()
-    {
-        _Anim.speed = 0f;
-        _IsInSlamAttack = true;
     }
 }
