@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
+using UnityEngine.Events;
 
 public enum ESweeperAttackType
 {
@@ -55,6 +54,13 @@ public abstract class PlayerController : MonoBehaviour
     [SerializeField] protected CapsuleCollider2D _Collider;                       // reference to the collider
 
     [Header("Debug")] [SerializeField] protected bool DebugMode = true;
+
+    [Header("Character Health")]
+    [SerializeField] protected float _MaxHealth;
+    [SerializeField] protected float _CurrentHealth;
+    public float CurrentHealth => _CurrentHealth;
+    public UnityEvent _CharacterTakeDamage;
+    
     
 
     protected PlayerInputs _Inputs;
@@ -73,6 +79,8 @@ public abstract class PlayerController : MonoBehaviour
             TryGetComponent(out _Render);
         if (!_Collider)
             TryGetComponent(out _Collider);
+
+        _CurrentHealth = _MaxHealth;
     }
 
     protected virtual void OnEnable()
@@ -279,5 +287,20 @@ public abstract class PlayerController : MonoBehaviour
             return _MovementSpeed;
 
         return _AirControl;
+    }
+
+    public void TakeDamage(float damagePoints)
+    {
+        _CurrentHealth -= damagePoints;
+        if (_CurrentHealth < 0)
+        {
+            // TODO: Play death animation
+            _CanMove = false;
+        }
+        else
+        {
+            // Play take hit animation
+            _CharacterTakeDamage?.Invoke();
+        }
     }
 }
