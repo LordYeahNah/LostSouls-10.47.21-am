@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private PlayerController _Player;
     [SerializeField] private Image _HealthSlider;
 
-    private void Awake()
+    private void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
         if(_Player)
