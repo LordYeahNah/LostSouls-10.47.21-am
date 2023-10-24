@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 591fd1471188b43e4b89ffda0785ced5
+guid: d8cf9e17b30370244bebf5e50c872f0c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5620874286149077511
+    second: Blood Hit 1_0
+  - first:
+      213: 6475399060208600965
+    second: Blood Hit 1_1
+  - first:
+      213: 5420727787080424198
+    second: Blood Hit 1_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,134 +100,68 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: Blood Hit 1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 120
-        width: 31
-        height: 15
+        x: 41
+        y: 26
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d5c972cb951a26841b16a0cb902fcd77
-      internalID: 1397246868
+      spriteID: 70a0b01f16b510e40800000000000000
+      internalID: 5620874286149077511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_1
+      name: Blood Hit 1_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 90
-        width: 48
-        height: 9
+        x: 113
+        y: 24
+        width: 19
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8e50e1648e973834685e4743add0153e
-      internalID: 1343939636
+      spriteID: 587c1aa132d3dd950800000000000000
+      internalID: 6475399060208600965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_2
+      name: Blood Hit 1_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 60
-        width: 50
-        height: 9
+        x: 185
+        y: 19
+        width: 193
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3bc67b6688555c24b994f86f3f924571
-      internalID: -641535461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 30
-        width: 52
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8932fbf955858b43b4febc56c9f46ab
-      internalID: 83909754
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_4
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 37
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 525ca061cda24da449beb85b13147f9c
-      internalID: 1865589144
+      spriteID: 60b940db33b4a3b40800000000000000
+      internalID: 5420727787080424198
       vertices: []
       indices: 
       edges: []
@@ -226,19 +169,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      death_0: 1397246868
-      death_1: 1343939636
-      death_2: -641535461
-      death_3: 83909754
-      death_4: 1865589144
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

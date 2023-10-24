@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 591fd1471188b43e4b89ffda0785ced5
+guid: cd03df6c60fb8324c88e3194a801da42
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3341508870183962744
+    second: Sparks Hit 2_0
+  - first:
+      213: 5354819019075263395
+    second: Sparks Hit 2_1
+  - first:
+      213: 4380014861342442200
+    second: Sparks Hit 2_2
+  - first:
+      213: 7190437485713236425
+    second: Sparks Hit 2_3
+  - first:
+      213: -224383154490226687
+    second: Sparks Hit 2_4
+  - first:
+      213: 7339928337648851239
+    second: Sparks Hit 2_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,134 +109,131 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: Sparks Hit 2_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 120
-        width: 31
-        height: 15
+        x: 33
+        y: 17
+        width: 22
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d5c972cb951a26841b16a0cb902fcd77
-      internalID: 1397246868
+      spriteID: 8873edaf26390a1d0800000000000000
+      internalID: -3341508870183962744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_1
+      name: Sparks Hit 2_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 90
-        width: 48
-        height: 9
+        x: 108
+        y: 14
+        width: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8e50e1648e973834685e4743add0153e
-      internalID: 1343939636
+      spriteID: 3ab9c7cd683205a40800000000000000
+      internalID: 5354819019075263395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_2
+      name: Sparks Hit 2_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 60
-        width: 50
-        height: 9
+        x: 109
+        y: 35
+        width: 10
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3bc67b6688555c24b994f86f3f924571
-      internalID: -641535461
+      spriteID: 8d28f316f40f8cc30800000000000000
+      internalID: 4380014861342442200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_3
+      name: Sparks Hit 2_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 30
-        width: 52
-        height: 9
+        x: 110
+        y: 28
+        width: 11
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a8932fbf955858b43b4febc56c9f46ab
-      internalID: 83909754
+      spriteID: 9c12793fbc099c360800000000000000
+      internalID: 7190437485713236425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_4
+      name: Sparks Hit 2_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 37
-        height: 9
+        x: 114
+        y: 34
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 525ca061cda24da449beb85b13147f9c
-      internalID: 1865589144
+      spriteID: 1084707b5b4d2ecf0800000000000000
+      internalID: -224383154490226687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparks Hit 2_5
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 10
+        width: 169
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729126a3fe9acd560800000000000000
+      internalID: 7339928337648851239
       vertices: []
       indices: 
       edges: []
@@ -226,19 +241,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      death_0: 1397246868
-      death_1: 1343939636
-      death_2: -641535461
-      death_3: 83909754
-      death_4: 1865589144
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

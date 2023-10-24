@@ -147,6 +147,13 @@ public class EnemyController : AIController
         {
             if(_Anim)
                 _Anim.SetTrigger("TakeHit");
+
+            // Set the target if it's not already set
+            if (!_Blackboard.GetValue<bool>("HasTarget"))
+            {
+                _Blackboard.SetValue("HasTarget", true);
+                _Blackboard.SetValue("Target", _PlayerRef.gameObject);
+            }
             
            // ApplyAttackForce(attackPosition, attackForce);
         }

@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 591fd1471188b43e4b89ffda0785ced5
+guid: 7c8abed8678da1c41bba20e83a37bbbb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3234045422871805630
+    second: Poison 1_0
+  - first:
+      213: -1985081832938519162
+    second: Poison 1_1
+  - first:
+      213: -5603416722696492045
+    second: Poison 1_2
+  - first:
+      213: 7084896878961596451
+    second: Poison 1_3
+  - first:
+      213: 4650466052755138222
+    second: Poison 1_4
+  - first:
+      213: 841706656535313207
+    second: Poison 1_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,134 +109,131 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: Poison 1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 120
-        width: 31
-        height: 15
+        x: 196
+        y: 24
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d5c972cb951a26841b16a0cb902fcd77
-      internalID: 1397246868
+      spriteID: 2418f3692dc5e13d0800000000000000
+      internalID: -3234045422871805630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_1
+      name: Poison 1_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 90
-        width: 48
+        x: 278
+        y: 25
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6854e9127929374e0800000000000000
+      internalID: -1985081832938519162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison 1_2
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 28
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb213bcd2aac32b0800000000000000
+      internalID: -5603416722696492045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Poison 1_3
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 31
+        width: 13
         height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8e50e1648e973834685e4743add0153e
-      internalID: 1343939636
+      spriteID: 32897cc8c2c925260800000000000000
+      internalID: 7084896878961596451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_2
+      name: Poison 1_4
       rect:
         serializedVersion: 2
-        x: 1
-        y: 60
-        width: 50
+        x: 524
+        y: 33
+        width: 176
         height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3bc67b6688555c24b994f86f3f924571
-      internalID: -641535461
+      spriteID: ea6ab7a5c36c98040800000000000000
+      internalID: 4650466052755138222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_3
+      name: Poison 1_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 30
-        width: 52
-        height: 9
+        x: 36
+        y: 23
+        width: 89
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a8932fbf955858b43b4febc56c9f46ab
-      internalID: 83909754
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_4
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 37
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 525ca061cda24da449beb85b13147f9c
-      internalID: 1865589144
+      spriteID: 73b7edb9eb75eab00800000000000000
+      internalID: 841706656535313207
       vertices: []
       indices: 
       edges: []
@@ -226,19 +241,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      death_0: 1397246868
-      death_1: 1343939636
-      death_2: -641535461
-      death_3: 83909754
-      death_4: 1865589144
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

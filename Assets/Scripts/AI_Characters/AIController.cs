@@ -77,28 +77,27 @@ public class AIController : MonoBehaviour
     {
         if (HasReachedPath())
         {
-            _RBody.velocity = Vector2.zero;
             return;
         }   
-            
-
-        Vector2 direction = ((Vector2)_Path.vectorPath[_CurrentWaypoint] - _RBody.position).normalized;
-        Vector2 force = direction * (_MovementSpeed * Time.deltaTime);
-
-        _RBody.velocity = force;
 
         float distance = Vector2.Distance(_RBody.position, _Path.vectorPath[_CurrentWaypoint]);
         if (distance < _NextWayPointDistance)
             _CurrentWaypoint++;
+        
+        Vector2 direction = ((Vector2)_Path.vectorPath[_CurrentWaypoint] - _RBody.position).normalized;
+        Vector2 force = direction * (_MovementSpeed * Time.deltaTime);
 
-        if (force.x > 0)
+        _RBody.velocity = force;
+        
+
+        if (_RBody.velocity.x > 0)
         {
             if (_Render.flipX)
                 _Render.flipX = false;
         }
-        else if(force.x < 0)
+        else if(_RBody.velocity.x < 0)
         {
-            if(!_Render.flipX)
+            if (!_Render.flipX)
                 _Render.flipX = true;
         }
     }

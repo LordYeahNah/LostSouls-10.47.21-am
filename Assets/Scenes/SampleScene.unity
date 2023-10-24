@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 0
+  drawGizmos: 1
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetTransform: {fileID: 0}
   _MovementSpeed: 20
-  _NextWayPointDistance: 3
+  _NextWayPointDistance: 100
   _Tree: {fileID: 691705855}
   _Render: {fileID: 1323479952}
   _Seeker: {fileID: 691705850}
@@ -3987,8 +3987,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.006550014, y: -0.2654, z: 0}
-    m_Extent: {x: 1.0244501, y: 0.9285, z: 0}
+    m_Center: {x: -0.004499972, y: -0.26455, z: 0}
+    m_Extent: {x: 1.0304999, y: 0.92565, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
