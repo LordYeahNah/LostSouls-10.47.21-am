@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public enum ESweeperAttackType
 {
@@ -60,6 +61,10 @@ public abstract class PlayerController : MonoBehaviour
     [SerializeField] protected float _CurrentHealth;
     public float CurrentHealth => _CurrentHealth;
     public UnityEvent _CharacterTakeDamage;
+
+    [FormerlySerializedAs("_IsInInteraction")] [Header("Interactions")] 
+    public bool IsInInteraction = false;
+    public IInteractable _Interactable;
     
     
 
@@ -108,6 +113,14 @@ public abstract class PlayerController : MonoBehaviour
 
     protected void HandleMovement()
     {
+
+        if (IsInInteraction)
+        {
+            _Rbody.velocity = Vector2.zero;
+            HandleMovementAnimation(0f);
+            return;
+        }
+        
         float movementDirection = _Inputs.Player.Move.ReadValue<float>();                   // Read the float value
         Vector2 movementInput = Vector2.zero;                   // define the movement input
 
@@ -182,20 +195,12 @@ public abstract class PlayerController : MonoBehaviour
 
         if (_Flipped)
         {
-            if (!_Render.flipX)
-            {
-                _Render.flipX = true;
-                _Collider.offset = new Vector2(_ColliderFacingLeft, _Collider.offset.y);
-            }
-                
+            this.transform.localScale = new Vector3(-1, 1, 0);    
         }
         else
         {
-            if (_Render.flipX)
-            {
-                _Render.flipX = false;
-                _Collider.offset = new Vector2(_ColliderFacingRight, _Collider.offset.y);   
-            }
+            this.transform.localScale = new Vector3(1, 1, 0);
+            
                 
         }
 
@@ -214,7 +219,7 @@ public abstract class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && IsGrounded())
+        if (ctx.performed && IsGrounded() && !IsInInteraction)
         {
             _PerformJump = true;
         }
@@ -222,7 +227,7 @@ public abstract class PlayerController : MonoBehaviour
 
     public virtual void Attack(InputAction.CallbackContext ctx)
     {
-        if (_IsAttacking)
+        if (_IsAttacking || IsInInteraction)
             return;
 
         _IsAttacking = true;
@@ -303,6 +308,18 @@ public abstract class PlayerController : MonoBehaviour
                 _Anim.SetTrigger("TakeHit");
             
             _CharacterTakeDamage?.Invoke();
+        }
+    }
+
+    public void EnterInteraction(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (!IsInInteraction && _Interactable != null)
+            {
+                _Interactable.Interact();
+                IsInInteraction = true;
+            }
         }
     }
 }
