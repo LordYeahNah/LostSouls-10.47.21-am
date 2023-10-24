@@ -24,7 +24,7 @@ public class IsInAttackDistance : Task
                 Vector2 targetPosition = target.transform.position;
                 Vector2 agentPosition = self.transform.position;
 
-                if (Vector2.Distance(targetPosition, agentPosition) < board.GetValue<float>("AttackDistance"))
+                if (Vector2.Distance(targetPosition, agentPosition) < board.GetValue<float>("MinAttackDistance"))
                 {
                     EnemyController enemy = self.GetComponent<EnemyController>();
                     if (enemy)

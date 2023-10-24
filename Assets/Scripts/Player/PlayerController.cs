@@ -299,7 +299,9 @@ public abstract class PlayerController : MonoBehaviour
         }
         else
         {
-            // Play take hit animation
+            if(_Anim)
+                _Anim.SetTrigger("TakeHit");
+            
             _CharacterTakeDamage?.Invoke();
         }
     }

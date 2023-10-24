@@ -14,7 +14,11 @@ public class EnemyController : AIController
     [SerializeField] protected float _AttackDistance = 0.5f;                        // How far the AI needs to be to attack the character
     [SerializeField] protected bool _CanAttack = true;                         // If the character can perform an attack
     [SerializeField] protected Transform _AttackCast;                           // where the attack cast starts
-    [SerializeField] protected float _AttackCastDistance = 2f;                      
+    [SerializeField] protected float _AttackCastDistance = 2f;
+    [SerializeField] protected float _CooldownTime = 2f;                        // How long before the character can attack again
+    [SerializeField] protected float _DamagePoints;
+    [SerializeField] protected LayerMask _AttackLayer;
+    
     [Header("Stats")] 
     [SerializeField] protected float _MaxHealth;
     [SerializeField] protected float _CurrentHealth;
@@ -31,6 +35,7 @@ public class EnemyController : AIController
     {
         base.Awake();
         _CurrentHealth = _MaxHealth;
+        _PlayerRef = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
     }
     
     protected override void Start()
@@ -48,6 +53,8 @@ public class EnemyController : AIController
     {
         if (!_CanAttack)
             return;
+        
+        Debug.Log("Attacking");
 
         if (_Anim)
             _Anim.SetTrigger("Attack");
@@ -63,16 +70,30 @@ public class EnemyController : AIController
             direction = this.transform.TransformDirection(Vector2.right);
         }
 
-        LayerMask playerLayer = LayerMask.NameToLayer("Player");
-        RaycastHit2D hit = Physics2D.Raycast(_AttackCast.position, direction, _AttackCastDistance, playerLayer);
-        if (hit.collider.CompareTag("Player"))
+        
+        RaycastHit2D hit = Physics2D.Raycast(_AttackCast.position, direction, _AttackCastDistance, _AttackLayer);
+        if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            PlayerController player = hit.collider.GetComponent<PlayerController>();
+            PlayerController player = hit.collider.GetComponent<PlayerController>();    
             if (player != null)
             {
-                // TODO: Take Damage
+               player.TakeDamage(GenerateDamagePoints());
             }
         }
+
+        _CanAttack = false;
+        StartCoroutine(ResetAttack());
+    }
+
+    protected IEnumerator ResetAttack()
+    {
+        yield return new WaitForSeconds(_CooldownTime);
+        _CanAttack = true;
+    }
+
+    protected virtual float GenerateDamagePoints()
+    {
+        return _DamagePoints;
     }
 
     private void WithinTargetRange()

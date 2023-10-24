@@ -76,7 +76,11 @@ public class AIController : MonoBehaviour
     private void HandleMovement()
     {
         if (HasReachedPath())
+        {
+            _RBody.velocity = Vector2.zero;
             return;
+        }   
+            
 
         Vector2 direction = ((Vector2)_Path.vectorPath[_CurrentWaypoint] - _RBody.position).normalized;
         Vector2 force = direction * (_MovementSpeed * Time.deltaTime);

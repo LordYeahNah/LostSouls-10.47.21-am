@@ -11,6 +11,11 @@ public class GhoulBehaviorTree : BehaviorTree
             new Sequence(this, new List<Task>
             {
                 new HasTarget(this),
+                new IsInAttackDistance(this),
+            }),
+            new Sequence(this, new List<Task>
+            {
+                new HasTarget(this),
                 new GetTargetPosition(this),
                 new MoveToLocation(this)
             }),
