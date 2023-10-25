@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 772ffcb7ff3debc4eb14fa29a446fb28
+  - enabled: 1
+    path: Assets/Scenes/Cave_1.unity
+    guid: ae594cc7b01834a45b88ade53b0bbe1a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

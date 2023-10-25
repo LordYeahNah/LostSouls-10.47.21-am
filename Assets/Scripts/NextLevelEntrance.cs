@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevelEntrance : MonoBehaviour, IInteractable
 {
@@ -10,7 +11,8 @@ public class NextLevelEntrance : MonoBehaviour, IInteractable
     
     public void Interact()
     {
-        // TODO: Load Next Level
+        SceneManager.LoadScene(_LevelName, LoadSceneMode.Single);
+        GameController.Instance.SaveGame.SaveGame(_LevelName);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

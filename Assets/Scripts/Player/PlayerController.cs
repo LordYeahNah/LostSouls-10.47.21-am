@@ -15,6 +15,7 @@ public enum ESweeperAttackType
 
 public abstract class PlayerController : MonoBehaviour
 {
+    [SerializeField] private EPlayerCharacter _CharacterType;
     [Header("Movement Settings")] 
     [SerializeField] protected float _MovementSpeed;                          // Speed the character moves at
     [SerializeField] protected float _ColliderFacingRight;                // Position of the collider facing right
@@ -69,6 +70,17 @@ public abstract class PlayerController : MonoBehaviour
     
 
     protected PlayerInputs _Inputs;
+
+    public void SetupData(PlayerSaveData data, bool setPosition = false)
+    {
+        if (setPosition)
+            this.transform.position = data.SavePosition;
+
+        _CurrentHealth = data.CurrentHealth;
+        if(_CurrentHealth < _MaxHealth)
+            _CharacterTakeDamage?.Invoke();
+
+    }
 
     protected virtual void Awake()
     {
@@ -334,5 +346,10 @@ public abstract class PlayerController : MonoBehaviour
                 IsInInteraction = true;
             }
         }
+    }
+
+    public PlayerSaveData SavePlayerData()
+    {
+        return new PlayerSaveData(_CharacterType, _CurrentHealth, Vector2.zero);
     }
 }

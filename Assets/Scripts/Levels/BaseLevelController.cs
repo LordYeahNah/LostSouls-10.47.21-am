@@ -24,9 +24,9 @@ public class BaseLevelController : MonoBehaviour
     {
         if (_PlayerSpawnPoint)
         {
-            GameObject spawnedPlayer = Instantiate(GameController.Instance.PlayerObject);
-            if (spawnedPlayer)
-                spawnedPlayer.transform.position = _PlayerSpawnPoint.transform.position;
+            GameObject player = GameController.Instance.GetPlayerCharacter();
+            if (player != null)
+                player.transform.position = _PlayerSpawnPoint.position;
         }
     }
 }
