@@ -16,11 +16,18 @@ public class Guide : MonoBehaviour, IInteractable
     
     public void Interact()
     {
-        if (_Dialog)
+        if (!_Dialog.IsDialogActive)
         {
-            _Dialog.IsDialogActive = true;
-            _InteractObject.SetActive(false);
-            _DialogObject.SetActive(true);
+            if (_Dialog)
+            {
+                _Dialog.IsDialogActive = true;
+                _InteractObject.SetActive(false);
+                _DialogObject.SetActive(true);
+            }
+        }
+        else
+        {
+            _Dialog.NextAction();
         }
     }
 

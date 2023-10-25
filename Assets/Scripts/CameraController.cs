@@ -12,6 +12,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _MaxY;
     [SerializeField] private float _MinX;
     [SerializeField] private float _MaxX;
+
+    private void Start()
+    {
+        // Get reference to the player transform
+        if (!_Target)
+        {
+            _Target = GameObject.FindGameObjectWithTag("Player").transform;                 
+        }
+    }
     
     
     private void FixedUpdate()

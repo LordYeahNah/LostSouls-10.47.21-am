@@ -47,7 +47,7 @@ public class DialogController : MonoBehaviour
             _InteractionContainer.SetActive(true);
 
         if (_MessageContainer)
-            _MessageContainer.SetActive(true);
+            _MessageContainer.SetActive(false);
         
         IsDialogActive = false;
     }

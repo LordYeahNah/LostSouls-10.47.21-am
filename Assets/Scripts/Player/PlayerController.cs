@@ -219,12 +219,25 @@ public abstract class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && IsGrounded() && !IsInInteraction)
+        if (ctx.performed)
         {
-            _PerformJump = true;
+            if (IsInInteraction)
+                HandleInteractionUpdate();
+            else
+                if(IsGrounded())
+                    _PerformJump = true;
+
         }
     }
 
+    protected void HandleInteractionUpdate()
+    {
+        if (_Interactable != null)
+        {
+            _Interactable.Interact();
+        }
+    }
+    
     public virtual void Attack(InputAction.CallbackContext ctx)
     {
         if (_IsAttacking || IsInInteraction)
