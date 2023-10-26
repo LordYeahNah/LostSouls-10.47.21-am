@@ -15,11 +15,6 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        // Get reference to the player transform
-        if (!_Target)
-        {
-            _Target = GameObject.FindGameObjectWithTag("Player").transform;                 
-        }
     }
     
     
@@ -52,5 +47,10 @@ public class CameraController : MonoBehaviour
             z = lerpedPosition.z
         };
         this.transform.position = clampedPosition;                  // Clamp the position
+    }
+
+    public void SetTarget(Transform target)
+    {
+        _Target = target;
     }
 }

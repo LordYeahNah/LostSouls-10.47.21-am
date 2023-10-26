@@ -264,7 +264,7 @@ public abstract class PlayerController : MonoBehaviour
 
     protected abstract void GenerateAttack();
 
-    public void PerformAttack()
+    public virtual void PerformAttack()
     {
         Vector2 direction = Vector2.zero;
         if (_Flipped)
@@ -309,6 +309,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         _CanMove = true;
         _IsAttacking = false;
+        _HeavyAttack = false;
     }
 
     private float GetMovementSpeed()

@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 4e6ac4f8b81014f5e8058dfbab2d45d3
+guid: ddb28cef5727f824db5976a7c5092945
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -195011537463460401
+    second: VFX for Sweep Attack_0
+  - first:
+      213: -7867738395122624617
+    second: VFX for Sweep Attack_1
+  - first:
+      213: 273194444434031576
+    second: VFX for Sweep Attack_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,113 +100,68 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset Add on2_0
+      name: VFX for Sweep Attack_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 299
-        width: 22
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ace295ea7c377c54c81cf8119cead5a7
-      internalID: -461245920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_1
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 344
-        width: 35
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d1d050c01f03a343b9f5bb7c5671557
-      internalID: -729352512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 240
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59a5f207e7d3d394389c5a773dbeacb8
-      internalID: 246261491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_3
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 276
-        width: 14
-        height: 13
+        x: 0
+        y: 102
+        width: 26
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 88713a20e33aff741abe36daa57e7ef9
-      internalID: -1358687831
+      spriteID: fcd33663a0e2b4df0800000000000000
+      internalID: -195011537463460401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Sweep Attack_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 82
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 797930d5d9d20d290800000000000000
+      internalID: -7867738395122624617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX for Sweep Attack_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 57
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d3c91756e49ac300800000000000000
+      internalID: 273194444434031576
       vertices: []
       indices: 
       edges: []
@@ -205,18 +169,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Tileset Add on2_0: -461245920
-      Tileset Add on2_1: -729352512
-      Tileset Add on2_2: 246261491
-      Tileset Add on2_3: -1358687831
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

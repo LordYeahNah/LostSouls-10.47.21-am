@@ -1,7 +1,22 @@
 fileFormatVersion: 2
-guid: 4e6ac4f8b81014f5e8058dfbab2d45d3
+guid: ce10ae669db8ec44897e5ca8b54757bc
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 42924150760849096
+    second: run with VFX_0
+  - first:
+      213: 5382046916554409225
+    second: run with VFX_1
+  - first:
+      213: -4227271040971533988
+    second: run with VFX_2
+  - first:
+      213: -2756992721130952979
+    second: run with VFX_3
+  - first:
+      213: 4029046840823632946
+    second: run with VFX_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,41 +106,122 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset Add on2_0
+      name: run with VFX_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 299
-        width: 22
-        height: 20
+        x: 2
+        y: 133
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ceb266a94f789000800000000000000
+      internalID: 42924150760849096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run with VFX_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 115
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90546b1c72fd0ba40800000000000000
+      internalID: 5382046916554409225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run with VFX_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 57
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c519891a267b555c0800000000000000
+      internalID: -4227271040971533988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run with VFX_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 38
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de6e6a03ab13db9d0800000000000000
+      internalID: -2756992721130952979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run with VFX_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 234d3b241cc0ae730800000000000000
+      internalID: 4029046840823632946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: run with VFX_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 76
+        width: 25
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ace295ea7c377c54c81cf8119cead5a7
-      internalID: -461245920
+      spriteID: 1aae35ef4a689e54299a801d1dbfe8bd
+      internalID: 47233386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset Add on2_1
+      name: run with VFX_6
       rect:
         serializedVersion: 2
-        x: 38
-        y: 344
-        width: 35
-        height: 15
+        x: 2
+        y: 95
+        width: 25
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1d050c01f03a343b9f5bb7c5671557
-      internalID: -729352512
+      spriteID: a6cf527e721f1a6428b64d6745ca1ec4
+      internalID: 1767042675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset Add on2_2
+      name: run with VFX_7
       rect:
         serializedVersion: 2
-        x: 62
-        y: 240
-        width: 19
-        height: 20
+        x: 2
+        y: 19
+        width: 25
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,29 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a5f207e7d3d394389c5a773dbeacb8
-      internalID: 246261491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_3
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 276
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88713a20e33aff741abe36daa57e7ef9
-      internalID: -1358687831
+      spriteID: 55aeeacac0d3fba4ab76bfed18e0f58f
+      internalID: -472574170
       vertices: []
       indices: 
       edges: []
@@ -205,7 +280,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: a7b1de82cf0137943b71ea955004c932
     internalID: 0
     vertices: []
     indices: 
@@ -213,10 +288,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset Add on2_0: -461245920
-      Tileset Add on2_1: -729352512
-      Tileset Add on2_2: 246261491
-      Tileset Add on2_3: -1358687831
+      run with VFX_5: 47233386
+      run with VFX_6: 1767042675
+      run with VFX_7: -472574170
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

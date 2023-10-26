@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+    
 
     [Header("Player Objects")] 
     [SerializeField] private GameObject _Sweeper;
+    [SerializeField] private GameObject _Assassin;
 
-    private PlayerSaveData _SaveData;                       // Reference to the characters current data
+    public PlayerSaveData SaveData;                       // Reference to the characters current data
     private PlayerController _PlayerRef;                            // Reference to the player
 
     public PlayerController PlayerRef => _PlayerRef;
@@ -43,12 +45,15 @@ public class GameController : MonoBehaviour
     public GameObject GetPlayerCharacter()
     {
         GameObject toSpawn = null;
-        if (_SaveData != null)
+        if (SaveData != null)
         {
-            switch (_SaveData.Character)
+            switch (SaveData.Character)
             {
                 case EPlayerCharacter.SWEEPER:
                     toSpawn = _Sweeper;
+                    break;
+                case EPlayerCharacter.ASSASSIN:
+                    toSpawn = _Assassin;
                     break;
             }
         }
@@ -58,7 +63,7 @@ public class GameController : MonoBehaviour
             PlayerController player = toSpawn.GetComponent<PlayerController>();
             if (player)
             {
-                player.SetupData(_SaveData);
+                player.SetupData(SaveData);
                 _PlayerRef = player;
             }
                 

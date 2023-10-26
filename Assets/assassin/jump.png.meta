@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 4e6ac4f8b81014f5e8058dfbab2d45d3
+guid: 9be63cf645b840d41a5828f3b59359d8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4281637774074219296
+    second: jump_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -91,104 +94,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset Add on2_0
+      name: jump_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 299
-        width: 22
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ace295ea7c377c54c81cf8119cead5a7
-      internalID: -461245920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_1
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 344
-        width: 35
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d1d050c01f03a343b9f5bb7c5671557
-      internalID: -729352512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 240
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59a5f207e7d3d394389c5a773dbeacb8
-      internalID: 246261491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tileset Add on2_3
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 276
-        width: 14
-        height: 13
+        x: 0
+        y: 57
+        width: 32
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,8 +112,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88713a20e33aff741abe36daa57e7ef9
-      internalID: -1358687831
+      spriteID: fb0678e8b85205445af35d43db950969
+      internalID: -1764731676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b580dafe3cc9b4bbd0176780a38942
+      internalID: 1412196733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61358dd194f224d4b9f29dc5ff2e1c0f
+      internalID: -1231438257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78062bf3aae1c64f9caee32df767d1d
+      internalID: -236679513
       vertices: []
       indices: 
       edges: []
@@ -205,7 +184,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: e9e90060b4e3aa84fbc073c1a66a734d
     internalID: 0
     vertices: []
     indices: 
@@ -213,10 +192,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset Add on2_0: -461245920
-      Tileset Add on2_1: -729352512
-      Tileset Add on2_2: 246261491
-      Tileset Add on2_3: -1358687831
+      jump_0: -1764731676
+      jump_1: 1412196733
+      jump_2: -1231438257
+      jump_3: -236679513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

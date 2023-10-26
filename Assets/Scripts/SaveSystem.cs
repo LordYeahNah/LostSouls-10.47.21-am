@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public enum EPlayerCharacter
 {
     SWEEPER = 0,
+    ASSASSIN = 1,
 }
 
 [System.Serializable]
@@ -42,6 +43,7 @@ public class SaveGameController
 
         if (data != null)
         {
+            _Controller.SaveData = data;
             string dataJSON = data.ToJson();
             string dataPath = Application.persistentDataPath;
             dataPath += $"/{SaveGameID}.yns";
